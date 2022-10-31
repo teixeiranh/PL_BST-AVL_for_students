@@ -3,11 +3,7 @@ package PL;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author DEI-ESINF
@@ -68,16 +64,18 @@ public class TREE_WORDS extends BST<TextWord> {
      * @return a map with a list of words for each occurrence found.
      */
     public Map<Integer, List<String>> getWordsOccurrences() {
-        Map<Integer, List<String>> result = new HashMap<>();
-        List<String> listOfStrings;
+        Iterable<TextWord> textWordList = this.inOrder();
+        Map<Integer, List<String>> output = new TreeMap<>();
 
-        this.inOrder();
+        textWordList.forEach(textWord -> {
+            if (!output.containsKey(textWord.getOcorrences()))
+                output.put(textWord.getOcorrences(), new ArrayList<>());
 
+            List<String> thisWordList = output.get(textWord.getOcorrences());
+            thisWordList.add(textWord.getWord());
 
-
-
-
-        return result;
+        });
+        return output;
     }
 
 }

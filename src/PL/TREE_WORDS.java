@@ -68,8 +68,16 @@ public class TREE_WORDS extends BST<TextWord> {
      * @return a map with a list of words for each occurrence found.
      */
     public Map<Integer, List<String>> getWordsOccurrences() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Map<Integer, List<String>> result = new HashMap<>();
+        List<String> listOfStrings;
 
+        this.inOrder();
+
+
+
+
+
+        return result;
     }
 
 }
